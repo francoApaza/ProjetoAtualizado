@@ -7,14 +7,11 @@
 </head>
 <body>
         
-    <!--  Início do menu-->
-    <nav class="menu" >
-        <a href="index.html"><img width="100px"  src="./imagens/logotipo.png" alt="Full Stack Eletro"></a> </td>
-        <a href="produtos.html">Produtos</a></td>
-        <a href="loja.html">Nossas Lojas</a></td>
-        <a href="contato.html">Contato</a></td>
-    </nav>
-    <!--FIM do menu-->
+    <!--menu-->
+    <?php
+        include_once('menu.html');
+    ?>
+
     <br><br><br><br>   
     <!-- colocar o seu conteudo  -->
     <main class= "saudacao">
@@ -31,6 +28,7 @@
         
 
         <br><br><br>
+
 
     <footer id="rodape">
         <p id="formas_pagamento">formas de pagamento:</p>
