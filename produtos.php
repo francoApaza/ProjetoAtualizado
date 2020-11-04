@@ -11,10 +11,6 @@
   if (!$conn) {
     die("A conexão ao BD falhou : " . mysqli_connect_error());
   }
-
-  
-
-
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +35,7 @@
     <main class="mainProdutos">
 
       <aside class="categorias">
-        <h3>Categorias</h3>
+        <h3>Categorias: </h3>
         <ul>
           <li onclick="exibir_todos()"><b>Todos (12)</b></li>
           <li onclick="exibir_categoria('geladeira')"> Geladeiras (3)</li>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Out-2020 às 16:46
+-- Tempo de geração: 04-Nov-2020 às 02:42
 -- Versão do servidor: 10.4.14-MariaDB
 -- versão do PHP: 7.4.11
 
@@ -19,7 +19,32 @@ SET time_zone = "+00:00";
 
 --
 -- Banco de dados: `fseletro`
--- 
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) DEFAULT NULL,
+  `msg` varchar(300) DEFAULT NULL,
+  `data` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `comentarios`
+--
+
+INSERT INTO `comentarios` (`id`, `nome`, `msg`, `data`) VALUES
+(1, 'frans', 'teste', '2020-11-03 20:39:11'),
+(2, 'frans', 'teste', '2020-11-03 20:55:23'),
+(3, 'frans', 'teste', '2020-11-03 20:55:38'),
+(4, 'lala', 'teste2', '2020-11-03 20:56:00'),
+(5, 'luisa', 'teste3', '2020-11-03 20:59:33'),
+(6, 'lena', 'redação', '2020-11-03 21:04:59');
 
 -- --------------------------------------------------------
 
@@ -83,13 +108,19 @@ INSERT INTO `produto` (`idproduto`, `categoria`, `descricao`, `preco`, `precofin
 (7, 'lavadora', 'Lava & Seca Samsung WD4000 de 10.2kg', '4500.00', '3999.00', 'imagens/lavadoura_samsung.jpg'),
 (8, 'lava-louca', 'Lava-louças pra família pequena Facilite sua ', '12300.00', '11999.00', 'imagens/lava_louca_facilite.jpg'),
 (9, 'lava-louca', 'Electrolux Lava-Louças Inox 14 Serviços (LV14', '5500.00', '3899.00', 'imagens/lava_louca_electrolux.jpg'),
-(10, 'lava-louca', 'Micro-ondas MORPHY RICHARDS 20 L', '4500.00', '3999.00', 'imagens/micro_ondas_morphy.jpg'),
+(10, 'micro-ondas', 'Micro-ondas MORPHY RICHARDS 20 L', '4500.00', '3999.00', 'imagens/micro_ondas_morphy.jpg'),
 (11, 'micro-ondas', 'Micro-ondas Electrolux 27 L , Função Tira Odo', '3500.00', '2999.00', 'imagens/micro_ondas_electrolux.jpg'),
 (12, 'micro-ondas', 'Micro-ondas Philco 30 Litros PME31', '4900.00', '4399.00', 'imagens/micro_ondas_philco.jpg');
 
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `pedidos`
@@ -107,6 +138,12 @@ ALTER TABLE `produto`
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `produto`

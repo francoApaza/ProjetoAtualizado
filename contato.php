@@ -1,3 +1,29 @@
+<?php
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $database = "fseletro";
+
+  // Criando a conexão 
+  $conn = mysqli_connect($servername, $username, $password, $database);
+
+  // Verificando a conexão 
+  if (!$conn) {
+    die("A conexão ao BD falhou : " . mysqli_connect_error());
+  }
+    //ligação do  cite com o banco de dados enviando informação 
+
+  if(isset($_POST['nome']) && isset($_POST['msg'])){
+    $nome = $_POST['nome'];
+    $msg = $_POST['msg'];
+
+    $sql = "insert into comentarios (nome, msg ) values('$nome', '$msg')";
+    $result = $conn->query($sql);
+  }
+
+?>
+
+
 <!DOCTYPE html>
 <htm lang="pt-br">
     <head>
@@ -14,7 +40,7 @@
     ?>
      
        <h2>Fale Conosco</h2>
-       <hr>
+       <hr><br><br>
        <table border=0 width="100%" cellpadding="20">
           <tr>
             <td width="50%" align="center">
@@ -29,16 +55,33 @@
           </tr>
        </table>
 
-       <form class="contato">
+       <form method="post" action="" class="contato">
          <h4> Nome: </h4>
-         <input type="text" style="width: 400px;" placeholder="escreva seu nome aqui:">
+         <input type="text" name="nome" style="width:400px"  placeholder="escreva seu nome aqui:">
          <h4> Mensagem:</h4>
-         <textarea style="width: 400px;"" placeholder="Deixe sua mensagem aqui: " ></textarea>
+         <input type="text" name="msg"  style="width:400px" placeholder="Deixe sua mensagem aqui: " ></input>
          <br>
-         <input type="submit" value="enviar">
-
+         <input type="submit" name="submit" value="enviar">
        </form>
+       <br><br>
+      
+       <!-- exibe comentarios do banco de dados  no site -->
+      
+       <?php
+              $sql = "select * from comentarios";
+              $result = $conn->query($sql);
 
+              if($result->num_rows > 0){
+                while($rows = $result->fetch_assoc()){
+                  echo "Data: ", $rows['data'],"<br>";
+                  echo "Nome: ", $rows['nome'],"<br>";
+                  echo "Mensagem: ", $rows['msg'],"<br>";    
+                  echo "<hr>";      
+                }
+              }else{
+                echo "Nenhum comentário ainda!";
+              }
+              ?>
        <br>
        <br><br><br><br><br>
        <br><br><br><br><br>
